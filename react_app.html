@@ -15,21 +15,31 @@
     <script type="text/babel">
     let dom = document.querySelector('#root');
 
-    let message = 'Show Message';
+    let message_true = "Flag is True";
+    let message_false = "Flag is False";
 
-    const msg_style ={
+    const msg_true ={
         fontSize:"20pt",
         fontWeight:"bold",
         color:"red",
         border:"2px solid green"
     }
 
-    let flag = true;
+    const msg_false ={
+        fontSize:"16pt",
+        fontWeight:"plain",
+        color:"green",
+        border:"blue"
+    }
+
+    let flag = false;
 
     let el = (
         <div>
-            {flag &&
-                <p style ={msg_style}>{message}</p>
+            {flag ?
+                <p style ={msg_true}>{message_true}</p>
+            :
+                <p style={msg_false}>{message_false}</p>
             }
         </div>
     );
