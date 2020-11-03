@@ -15,32 +15,22 @@
     <script type="text/babel">
     let dom = document.querySelector('#root');
 
-    let message_true = "Flag is True";
-    let message_false = "Flag is False";
-
-    const msg_true ={
+    const list ={
         fontSize:"20pt",
-        fontWeight:"bold",
-        color:"red",
-        border:"2px solid green"
+        padding:"5px 50px"
     }
 
-    const msg_false ={
-        fontSize:"16pt",
-        fontWeight:"plain",
-        color:"green",
-        border:"blue"
-    }
-
-    let flag = false;
+    let data = [
+        <li>1st</li>,
+        <li>2nd</li>,
+        <li>3rd</li>
+    ];
 
     let el = (
         <div>
-            {flag ?
-                <p style ={msg_true}>{message_true}</p>
-            :
-                <p style={msg_false}>{message_false}</p>
-            }
+            <ul style={list}>
+                {data}
+            </ul>
         </div>
     );
 
