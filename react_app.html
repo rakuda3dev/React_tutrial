@@ -15,22 +15,47 @@
     <script type="text/babel">
     let dom = document.querySelector('#root');
 
-    const list ={
-        fontSize:"20pt",
+    const table = {
+        fontSize:"16pt",
         padding:"5px 50px"
     }
 
+    const th = {
+        color:'white',
+        backgroundColor:'#006',
+        padding:'5px 15px'
+    }
+
+    const td = {
+        color:'black',
+        padding:'5px 15px',
+        border:'1px solid gray',
+    }
+
     let data = [
-        <li>1st</li>,
-        <li>2nd</li>,
-        <li>3rd</li>
+        {name:'Taro', mail:'taro@1st.com', age:12},
+        {name:'Jiro', mail:'jiro@2nd.com', age:24, tel:'09000990099'},
+        {name:'Saburo', mail:'saburo@3rd.com', age:36}
     ];
 
     let el = (
         <div>
-            <ul style={list}>
-                {data}
-            </ul>
+            <table style={table}>
+            <tr>
+                <th style={th}>name</th>
+                <th style={th}>mail</th>
+                <th style={th}>age</th>
+                <th style={th}>tel</th>
+            </tr>
+            {data.map((value) =>(
+            <tr>
+                <td style={td}>{value.name}</td>
+                <td style={td}>{value.mail}</td>
+                <td style={td}>{value.age}</td>
+                <td style={td}>{value.tel}</td>
+            </tr>
+            ))}
+            </table>
         </div>
     );
 
