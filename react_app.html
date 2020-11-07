@@ -15,48 +15,24 @@
     <script type="text/babel">
     let dom = document.querySelector('#root');
 
-    const dfn = {
+    const p = {
         fontSize:"20pt",
         padding:"10px"
-    }
-
-    const dt = {
-        fontSize:"16pt",
-        color:"white",
-        backgroundColor:"#006",
-        padding:"10px"
-    }
-
-    const dd = {
-        color:'black',
-        padding:'10px'
-    }
-
-    let data = {
-        url:'https://google.com',
-        title:'Google',
-        caption:"※This is Google"
     };
 
-    let el = (
-        <div>
-            {(()=>
-            <dl>
-                <dt style={dt}><dfn style={dfn}>
-                    {data.title}
-                </dfn></dt>
-                <dd style={dd}>
-                    {data.caption}
-                </dd>
-                <dd style={dd}>
-                    <a href={data.url}>{data.title}へ</a>
-                </dd>
-            </dl>
-            )()}
-        </div>
-    );
+    var counter = 0;
 
-    ReactDOM.render(el, dom);
+    setInterval(() => {
+        counter++;
+
+        let el = (
+            <div>
+                <p style={p}>count: {counter}</p>
+            </div>
+        );
+        ReactDOM.render(el, dom);
+    }, 1000);
+
     </script>
 </body>
 
