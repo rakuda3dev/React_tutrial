@@ -15,29 +15,29 @@
     <script type="text/babel">
     let dom = document.querySelector('#root');
 
-    const msg1 = {
-        fontSize:"20pt",
-        fontWeight:"bold",
-        border:"double 5px magenta"
-    };
-
-    const msg2 ={
+    const msg = {
         fontSize:"16pt",
         fontWeight:"bold",
         padding:"10px",
-        backgroundColor:"cyan"
-    }
+        color:"white",
+        backgroundColor:"darkblue"
+    };
 
     // 関数コンポーネント
-    function Welcome(props){
-        return <p style={props.style}> {props.name} </p>;
+    function Calc(props){
+        let total =0;
+        for (let i=1; i <=props.number; i++){
+            total += i;
+        }
+        return <p style={msg}>1から {props.number} までの合計は{total} </p>;
     }
 
     // 表示のためのjsx
     let el = (
         <div>
-            <Welcome name="Taro" style={msg1}/>
-            <Welcome name="Jiro" style={msg2}/>
+            <Calc number="100" />
+            <Calc number="200" />
+            <Calc number="300" />
         </div>
     );
     ReactDOM.render(el, dom);
