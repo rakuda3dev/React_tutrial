@@ -19,29 +19,28 @@
         fontSize:"16pt",
         fontWeight:"bold",
         padding:"10px",
-        color:"white",
-        backgroundColor:"darkblue"
+        border:"solid 5px yellow"
     };
 
-    // 関数コンポーネント
-    function Calc(props){
-        let total =0;
-        for (let i=1; i <=props.number; i++){
-            total += i;
+    class Hello extends React.Component {
+
+        constructor(prpos){
+            super(prpos);
         }
-        return <p style={msg}>1から {props.number} までの合計は{total} </p>;
+
+        render(){
+            return <p style={msg}>Hello!</p>;
+        }
+
     }
 
-    // 表示のためのjsx
     let el = (
         <div>
-            <Calc number="100" />
-            <Calc number="200" />
-            <Calc number="300" />
+            <Hello />    
         </div>
-    );
-    ReactDOM.render(el, dom);
+    )
 
+    ReactDOM.render(el ,dom);
     </script>
 </body>
 
