@@ -15,28 +15,41 @@
     <script type="text/babel">
     let dom = document.querySelector('#root');
 
-    const msg = {
-        fontSize:"16pt",
-        fontWeight:"bold",
-        padding:"10px",
-        border:"solid 5px yellow"
-    };
+    class SetColor extends React.Component {
 
-    class Hello extends React.Component {
+        x = 0;
+        y = 0;
+        width = 0;
+        height = 0;
+        color = "white";
+        style = {};
 
-        constructor(prpos){
-            super(prpos);
+        constructor(props){
+            super(props);
+            this.x = props.x;
+            this.y = props.y;
+            this.width = props.w;
+            this.height = props.h;
+            this.color = props.c;
+            this.style = {
+                backgroundColor:this.color,
+                position:"absolute",
+                left:this.x + "px",
+                top:this.y + "px",
+                width:this.width + "px",
+                height:this.height + "px"
+            }
         }
 
         render(){
-            return <p style={msg}>Hello!</p>;
+            return <p style={this.style}>色を重ねます</p>;
         }
-
     }
 
     let el = (
         <div>
-            <Hello />    
+            <SetColor x="100" y="100" w="100" h="100" c="cyan" />
+            <SetColor x="150" y="150" w="150" h="150" c="magenta" /> 
         </div>
     )
 
