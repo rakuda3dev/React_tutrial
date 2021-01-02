@@ -13,6 +13,11 @@ class App extends Component{
     padding:"5px",
   }
 
+  inputStyle = {
+    fontSize:"12pt",
+    padding:"5px"
+  }
+
   constructor(props){
     super(props);
     this.state ={
@@ -36,40 +41,17 @@ class App extends Component{
   render(){
     return <div>
       <h1>React</h1>
-      <h2 style={this.msgStyle}>show list.</h2>
-      <Message title="Children">
-      これはコンポーネント内のコンテンツ。
-      まるでテキストを分割し、リストにして表示。
-      改行は必要ない。
-      </Message>
+      <h2>{this.state.message}</h2>
+
+      <form onSubmit={this.doSubmit}>
+        <label>
+          <span style={this.inputStyle}></span>Message:
+          <input type="text" style={this.inputStyle}
+            onChange={this.doChange} />
+        </label>
+        <input type="submit" style={this.inputStyle} value="Click" />
+      </form>
     </div>;
-  }
-}
-class Message extends Component{
-  li = {
-    fontSize:"16pt",
-    color:"#06",
-    margin:"0px",
-    padding:"0px",
-  }
-
-  render(){
-    let content = this.props.children;
-    let arr = content.split('。');
-    let arr2 = [];
-    for(let i = 0 ; i<arr.length ; i++){
-      if (arr[i].trim()!= ''){
-        arr2.push(arr[i]);
-      }
-    }
-
-    let list = arr2.map((value, key) => (
-      <li style={this.li} key={key}>{value}.</li>
-    ));
-    return <div>
-      <h2>{this.props.title}</h2>
-      <ol>{list}</ol>
-    </div>
   }
 }
 
