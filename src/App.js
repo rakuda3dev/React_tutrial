@@ -3,41 +3,43 @@ import Rect from './Rect';
 import './App.css';
 import { identifier } from '@babel/types';
 
-let data = {title:'Title', message:'this is sample message.'};
+let theme = {
+  light:{
+    backgroundColor:"#eef",
+    color:"#006",
+    padding:"10px",
+  },
+  dark:{
+    backgroundColor:"#006",
+    color:"eef",
+    padding:"10px",
+  }
+};
 
-const SampleContext = React.createContext(data);
+const ThemeContext = React.createContext(theme.light); // light or dark で見た目が変わる
 
 class App extends Component{
 
-  newdata = {title:'new Title', message:'this is new message'};
+  static contextType = ThemeContext;
 
   render(){
     return (
-      <div>
-        <h1>Context</h1>
-        <Title />
-        <Message />
-        
-        <SampleContext.Provider value={this.newdata}>
-          <Title />
-          <Message />
-        </SampleContext.Provider>
-
-        <Title />
-        <Message />
-
+      <div style={this.context}>
+        <Title value="Content Page"/>
+        <Message value="This is Content sample"/>
+        <Message value="This is Theme sample" />
       </div>
     );
   }
 }
 
 class Title extends Component{
-  static contextType = SampleContext;
+  static contextType = ThemeContext;
 
   render(){
     return (
       <div>
-        <h2>{this.context.title}</h2>
+        <h2 style={this.context}>{this.props.value}</h2>
       </div>
     );
   }
@@ -45,13 +47,11 @@ class Title extends Component{
 
 class Message extends Component {
 
-  static contextType = SampleContext;
+  static contextType = ThemeContext;
 
   render(){
     return (
-      <div>
-        <p>{this.context.message}</p>
-      </div>
+      <p style={this.context}>{this.props.value}</p>
     );
   }
 }
