@@ -19,8 +19,10 @@ let state_value = {
 // configration of Redux Persist
 const persistConfig = {
   key: 'memo',
-  storage,
-}
+  storage:storage,
+  blacklist: ['message', 'mode', 'fdata'],
+  whitelist: ['data']
+};
 
 // persist reducer
 const persistedReducer = persistReducer(persistConfig, memoReducer)
