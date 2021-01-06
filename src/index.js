@@ -7,6 +7,8 @@ import storage from 'redux-persist/lib/storage';
 import {persistGate, PersistGate} from 'redux-persist/integration/react';
 import './index.css';
 import App from './App';
+import MemoStore, {MemoReducer} from './memo/Store';
+import { memoReducer } from './memo/Store';
 
 // value of state
 let state_value = {
@@ -14,38 +16,14 @@ let state_value = {
   message:"COUNTER"
 }
 
-// reducer
-function counter(state = state_value, action){
-
-  switch (action.type){
-    case 'INCREMENT':
-    return {
-      counter:state.counter + 1,
-      message:"INCREMENT"
-    };
-    case 'DECREMENT':
-    return {
-      counter:state.counter - 1,
-      message:"DECREMENT"
-    };
-    case 'RESET':
-    return {
-      counter:0,
-      message:"RESET"
-    };
-    default:
-    return state;
-  }
-}
-
 // configration of Redux Persist
 const persistConfig = {
-  key: 'root',
+  key: 'memo',
   storage,
 }
 
 // persist reducer
-const persistedReducer = persistReducer(persistConfig, counter)
+const persistedReducer = persistReducer(persistConfig, memoReducer)
 
 // store persister
 let store = createStore(persistedReducer)
